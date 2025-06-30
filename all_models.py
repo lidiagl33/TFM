@@ -116,7 +116,7 @@ print(importance_estimate)
 plt.figure()
 sns.barplot(x=importance_estimate.values, y=importance_estimate.index, palette="viridis")
 plt.suptitle("Estimated Feature Importance: GaussianNB", fontsize=13, fontweight="bold")
-plt.xlabel("|mean_in - mean_out|", fontsize=9)
+plt.xlabel("Importance = |mean_in - mean_out|", fontsize=9)
 plt.ylabel("Features", fontsize=9)
 plt.tight_layout()
 
