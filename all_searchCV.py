@@ -22,7 +22,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Cross-validation
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv = StratifiedKFold(n_splits=10, shuffle=True, random_state=42)
 
 
 # 1) GaussianNB (GridSearchCV)
@@ -47,7 +47,7 @@ print("Best parameters DT (Randomized):", rs_dt.best_params_)
 
 print("\nGridSearchCV for DecisionTree...")
 param_grid_dt = {
-    'max_depth': [1, 2, 3, 4],
+    'max_depth': [1, 2, 3],
     'min_samples_split': [11, 13, 15],
     'min_samples_leaf': [1, 2, 3]
 }
@@ -65,20 +65,21 @@ param_dist_rf = {
     'min_samples_split': randint(2, 20),
     'min_samples_leaf': randint(1, 20)
 }
-rs_rf = RandomizedSearchCV(RandomForestClassifier(random_state=42), param_distributions=param_dist_rf,
-                           n_iter=50, cv=cv, scoring='accuracy', n_jobs=-1, random_state=42)
+rs_rf = RandomizedSearchCV(RandomForestClassifier(max_features='sqrt', class_weight='balanced', random_state=42),
+                           param_distributions=param_dist_rf,n_iter=50, cv=cv, scoring='accuracy', n_jobs=-1,
+                           random_state=42)
 rs_rf.fit(X_train, y_train)
 print("Best parameters RF (Randomized):", rs_rf.best_params_)
 
 print("\nGridSearchCV for RandomForest...")
 param_grid_rf = {
-    'n_estimators': [50, 70, 90],
-    'max_depth': [1, 3, 5],
-    'min_samples_split': [6, 8, 10],
-    'min_samples_leaf': [2, 5, 8]
+    'n_estimators': [100, 200, 300],
+    'max_depth': [10, 20, 30],
+    'min_samples_split': [10, 15, 20],
+    'min_samples_leaf': [1, 2, 3]
 }
-gs_rf = GridSearchCV(RandomForestClassifier(random_state=42), param_grid=param_grid_rf, cv=cv,
-                     scoring='accuracy', n_jobs=-1)
+gs_rf = GridSearchCV(RandomForestClassifier(max_features='sqrt', class_weight='balanced', random_state=42),
+                     param_grid=param_grid_rf, cv=cv, scoring='accuracy', n_jobs=-1)
 gs_rf.fit(X_train, y_train)
 print("Best parameters RF (Grid):", gs_rf.best_params_)
 
