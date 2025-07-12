@@ -219,7 +219,7 @@ def results_cross_validation(y, y_cv_encoded, models, X_cv, y_cv):
             print(f"\t→ Of them, {high_confidence_correct} ({(high_confidence_correct / total_correct) * 100:.2f}%) had a confidence ≥ 75%")
 
             print(f"Total incorrect predictions: {total_incorrect}")
-            print(f"\t→ De ellas, {high_confidence_incorrect} ({(high_confidence_incorrect / total_incorrect) * 100:.2f}%) had a confidence ≥ 75%")
+            print(f"\t→ Of them, {high_confidence_incorrect} ({(high_confidence_incorrect / total_incorrect) * 100:.2f}%) had a confidence ≥ 75%")
 
         get_confusion_matrix(y_cv, y_pred_labels, ["out","in"], name)
 
