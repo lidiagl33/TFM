@@ -21,7 +21,6 @@ total_files = 0
 print("Write the name of the person (no uppercase letter): ")
 while True:
     name = input()
-    # attempt = input("\nAttempt: ")
     
     for filename in os.listdir(folder_path_1):
         x = filename.split('_')
