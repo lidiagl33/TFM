@@ -62,7 +62,7 @@ class State:
 
 def get_address(sensor):
     if sensor == "A":
-        add = "C5:AE:F0:9E:3D:37"
+        add = "E2:81:0C:F9:E3:0C"
         return add
     elif sensor == "B":
         add = "FA:79:5A:03:0C:03"

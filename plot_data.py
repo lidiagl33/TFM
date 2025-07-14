@@ -303,7 +303,7 @@ for i in range(len(attempts)):
     plt.plot(total_speed_hand[i])
     plt.xlabel('Time (samples)', fontsize=9)
     plt.ylabel("Speed (m/s)", fontsize=9)
-    plt.title("Total Speed Hand", fontsize=11)
+    plt.title(f"User 6, attempt {attempts[i]}", fontsize=13, fontweight="bold")
 
     plt.subplots_adjust(hspace=0.5)
 
